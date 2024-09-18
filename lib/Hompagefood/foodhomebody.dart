@@ -2,6 +2,7 @@ import 'package:dalyveryfood/utils/colors.dart';
 import 'package:dalyveryfood/widgets/big_text.dart';
 import 'package:dalyveryfood/widgets/iconandtext.dart';
 import 'package:dalyveryfood/widgets/small_text.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -34,16 +35,31 @@ class _FoodHomebodyState extends State<FoodHomebody> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      //color: Colors.redAccent,
-      height: 320,
-      child: PageView.builder(
-        controller: pageController,
-        itemCount: 7,
-        itemBuilder: (context, position){
-          return _buildPageItem(position);
-    }),
+    return Column(
+      children: [
+        Container(
+          //color: Colors.redAccent,
+          height: 320,
+          child: PageView.builder(
+              controller: pageController,
+              itemCount: 7,
+              itemBuilder: (context, position){
+                return _buildPageItem(position);
+              }),
 
+        ),
+    new DotsIndicator(
+    dotsCount: 5,
+    position: _currPageValue.round(),
+    decorator: DotsDecorator(
+
+    size: const Size.square(9.0),
+    activeSize: const Size(18.0, 9.0),
+    activeColor: AppColors.mainColor,
+    activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+    ),
+    ),
+      ],
     );
   }
   Widget _buildPageItem(int index){
@@ -66,12 +82,20 @@ class _FoodHomebodyState extends State<FoodHomebody> {
     } else if (index == _currPageValue.floor() + 1) {
       var currScale = _scaleFactor + (_currPageValue - index + 1) * (1 - _scaleFactor);
       var currTrans = _height * (1 - currScale) / 2;
+      matrix=Matrix4.diagonal3Values(1, currScale, 1);
       matrix = Matrix4.diagonal3Values(1, currScale, 1)..setTranslationRaw(0, currTrans, 0);
-    } else {
-      var currScale = _scaleFactor;
+    } else if(index==_currPageValue.floor()-1) {
+      var currScale=1-(_currPageValue-index)*(1-_scaleFactor);
+      // var currScale = _scaleFactor;
       var currTrans = _height * (1 - currScale) / 2;
+      matrix=Matrix4.diagonal3Values(1, currScale, 1);
       matrix = Matrix4.diagonal3Values(1, currScale, 1)..setTranslationRaw(0, currTrans, 0);
+    }else{
+      var currScale=0.8;
+      matrix = Matrix4.diagonal3Values(1, currScale, 1)..setTranslationRaw(0, _height*(1-_scaleFactor)/2, 0);
     }
+
+
     return Transform(
       transform: matrix,
       child: Stack(
@@ -96,6 +120,22 @@ class _FoodHomebodyState extends State<FoodHomebody> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.white,
+                boxShadow:[
+                  BoxShadow(
+                    color: Color(0xFFe8e8e8),
+                    blurRadius: 5.0,
+                    offset: Offset(5, 0),
+
+                  ),
+                  BoxShadow(
+                    color: Colors.white24,
+                    offset: Offset(-5,0)
+                  ),
+            BoxShadow(
+                color: Colors.white54,
+                offset: Offset(-5,0)
+            ),
+                ]
       
               ),
       
@@ -123,6 +163,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
                     ),
                     SizedBox(width: 20,),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconAndText(icon: Icons.circle_sharp,
                             text: "Normal",
@@ -141,6 +182,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
                   ],
                 ),
               ),
+
             ),
           )
         ],
