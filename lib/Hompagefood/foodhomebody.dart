@@ -1,10 +1,12 @@
+
 import 'package:dalyveryfood/utils/colors.dart';
 import 'package:dalyveryfood/widgets/big_text.dart';
 import 'package:dalyveryfood/widgets/iconandtext.dart';
 import 'package:dalyveryfood/widgets/small_text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/dimension.dart';
 
 class FoodHomebody extends StatefulWidget {
   const FoodHomebody({super.key});
@@ -17,7 +19,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currPageValue=0.0;
   double _scaleFactor=0.95;
-  double _height=220;
+  double _height=Demensions.pageViewContainer;
 
 
   @override
@@ -39,7 +41,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
       children: [
         Container(
           //color: Colors.redAccent,
-          height: 320,
+          height: Demensions.screenView,
           child: PageView.builder(
               controller: pageController,
               itemCount: 7,
@@ -49,7 +51,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
 
         ),
     new DotsIndicator(
-    dotsCount: 5,
+    dotsCount: 7,
     position: _currPageValue.round(),
     decorator: DotsDecorator(
 
@@ -101,10 +103,10 @@ class _FoodHomebodyState extends State<FoodHomebody> {
       child: Stack(
         children: [
           Container(
-            height: 220,
-            margin: EdgeInsets.only(left: 5, right: 5),
+            height: Demensions.pageViewContainer,
+            margin: EdgeInsets.only(left: Demensions.width10, right: Demensions.width10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Demensions.radius30),
                 color: index.isEven?Color(0xFF69c5df)  :Color(0xFF9294cc),
                 image: DecorationImage(
                     fit: BoxFit.cover,
@@ -115,10 +117,10 @@ class _FoodHomebodyState extends State<FoodHomebody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 120,
-              margin: EdgeInsets.only(left: 30, right: 30, bottom: 20),
+              height: Demensions.pageViewTextContainer,
+              margin: EdgeInsets.only(left: Demensions.width30, right: Demensions.width30, bottom: Demensions.height30),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(Demensions.radius30),
                   color: Colors.white,
                 boxShadow:[
                   BoxShadow(
@@ -167,6 +169,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
                       children: [
                         IconAndText(icon: Icons.circle_sharp,
                             text: "Normal",
+
       
                             iconColor: AppColors.iconColor1),
                         IconAndText(icon: Icons.location_pin,

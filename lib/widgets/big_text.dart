@@ -1,3 +1,4 @@
+import 'package:dalyveryfood/utils/dimension.dart';
 import 'package:flutter/cupertino.dart';
 
 class BigText extends StatelessWidget {
@@ -23,6 +24,7 @@ class BigText extends StatelessWidget {
       style: TextStyle(
         fontFamily: 'Roboto',
         color: color,
+        fontSize: size==0?Demensions.font20:size,
         fontWeight: FontWeight.w400
       ),
     );
