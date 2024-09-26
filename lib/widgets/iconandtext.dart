@@ -1,3 +1,4 @@
+import 'package:dalyveryfood/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:dalyveryfood/widgets/small_text.dart';
 
@@ -19,8 +20,8 @@ class IconAndText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: iconColor),
-        SizedBox(width: 5),
+        Icon(icon, color: iconColor, size: Dimensions.iconSize24,),
+
         SmallText(
           text: text,
           color: textColor  // Pass the text color here

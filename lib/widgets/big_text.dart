@@ -10,7 +10,7 @@ class BigText extends StatelessWidget {
 
  BigText({super.key, this.color = const Color(0xFF332d2b),
    required this.text,
-   this.size=40,
+   this.size=14,
    this.overFlow=TextOverflow.ellipsis
 
  });
@@ -24,7 +24,7 @@ class BigText extends StatelessWidget {
       style: TextStyle(
         fontFamily: 'Roboto',
         color: color,
-        fontSize: size==0?Demensions.font20:size,
+        fontSize: size==0?Dimensions.font20:size,
         fontWeight: FontWeight.w400
       ),
     );

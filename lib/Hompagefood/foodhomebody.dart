@@ -19,7 +19,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currPageValue=0.0;
   double _scaleFactor=0.95;
-  double _height=Demensions.pageViewContainer;
+  double _height=Dimensions.pageViewContainer;
 
 
   @override
@@ -39,9 +39,10 @@ class _FoodHomebodyState extends State<FoodHomebody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //slidepage
         Container(
           //color: Colors.redAccent,
-          height: Demensions.screenView,
+          height: Dimensions.screenView,
           child: PageView.builder(
               controller: pageController,
               itemCount: 7,
@@ -50,6 +51,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
               }),
 
         ),
+    //dots
     new DotsIndicator(
     dotsCount: 7,
     position: _currPageValue.round(),
@@ -61,9 +63,66 @@ class _FoodHomebodyState extends State<FoodHomebody> {
     activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
     ),
     ),
+        //polurpar text
+        SizedBox(height: Dimensions.height30,),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child:
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Phổ biến"),
+              SizedBox(width: Dimensions.width10,),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(text: ".", color:Colors.black26),
+              ),
+              SizedBox(width: Dimensions.width10),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(text: "Gợi ý cho bạn",),
+              )
+            ],
+          )
+        ),
+        // list food and image
+        Container(
+          height: 700,
+
+          child: ListView.builder(
+            physics: AlwaysScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 10,
+            itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20,bottom: Dimensions.height10),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 120,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20),
+                            color: Colors.white38,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                             image: AssetImage("assets/images/garan.jpg"),
+
+                          )
+                        ),
+                      )
+                    ],
+                  ),
+                );
+            },
+          ),
+        )
+
+
       ],
     );
   }
+
   Widget _buildPageItem(int index){
     Matrix4 matrix= new Matrix4.identity();
     /*if(index==_currPageValue.floor()){
@@ -103,10 +162,10 @@ class _FoodHomebodyState extends State<FoodHomebody> {
       child: Stack(
         children: [
           Container(
-            height: Demensions.pageViewContainer,
-            margin: EdgeInsets.only(left: Demensions.width10, right: Demensions.width10),
+            height: Dimensions.pageViewContainer,
+            margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Demensions.radius30),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
                 color: index.isEven?Color(0xFF69c5df)  :Color(0xFF9294cc),
                 image: DecorationImage(
                     fit: BoxFit.cover,
@@ -117,10 +176,10 @@ class _FoodHomebodyState extends State<FoodHomebody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: Demensions.pageViewTextContainer,
-              margin: EdgeInsets.only(left: Demensions.width30, right: Demensions.width30, bottom: Demensions.height30),
+              height: Dimensions.pageViewTextContainer,
+              margin: EdgeInsets.only(left: Dimensions.width30, right: Dimensions.width30, bottom: Dimensions.height30),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Demensions.radius30),
+                  borderRadius: BorderRadius.circular(Dimensions.radius30),
                   color: Colors.white,
                 boxShadow:[
                   BoxShadow(
@@ -151,7 +210,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
                     Row(
                       children: [
                         Wrap(
-                            children: List.generate(5, (index){ return  Icon(Icons.star, color: AppColors.mainColor, size: 20);})
+                            children: List.generate(5, (index){ return  Icon(Icons.star, color: AppColors.mainColor, size: Dimensions.iconSize24);})
                         ),
       
                         SizedBox(width: 10,),
