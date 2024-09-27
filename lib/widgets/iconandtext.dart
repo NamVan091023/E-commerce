@@ -12,7 +12,7 @@ class IconAndText extends StatelessWidget {
     super.key,
     required this.icon,
     required this.text,
-    this.textColor = Colors.black,  // Default color is black
+    this.textColor = Colors.black, // Default color is black
     required this.iconColor,
   });
 
@@ -20,12 +20,13 @@ class IconAndText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: iconColor, size: Dimensions.iconSize24,),
-
-        SmallText(
-          text: text,
-          color: textColor  // Pass the text color here
+        Icon(
+          icon,
+          color: iconColor,
+          size: Dimensions.iconSize24,
         ),
+        SmallText(text: text, color: textColor // Pass the text color here
+            ),
       ],
     );
   }

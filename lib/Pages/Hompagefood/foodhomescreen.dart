@@ -1,10 +1,12 @@
-import 'package:dalyveryfood/Hompagefood/foodhomebody.dart';
+
 import 'package:dalyveryfood/utils/colors.dart';
 import 'package:dalyveryfood/widgets/big_text.dart';
 import 'package:dalyveryfood/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/dimension.dart';
+import '../../utils/dimension.dart';
+
+import 'foodhomebody.dart';
 
 class HomeFoodmain extends StatefulWidget {
   const HomeFoodmain({super.key});

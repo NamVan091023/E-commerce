@@ -7,13 +7,12 @@ class BigText extends StatelessWidget {
   double size;
   TextOverflow overFlow;
 
-
- BigText({super.key, this.color = const Color(0xFF332d2b),
-   required this.text,
-   this.size=14,
-   this.overFlow=TextOverflow.ellipsis
-
- });
+  BigText(
+      {super.key,
+      this.color = const Color(0xFF332d2b),
+      required this.text,
+      this.size = 14,
+      this.overFlow = TextOverflow.fade});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +21,10 @@ class BigText extends StatelessWidget {
       maxLines: 1,
       overflow: overFlow,
       style: TextStyle(
-        fontFamily: 'Roboto',
-        color: color,
-        fontSize: size==0?Dimensions.font20:size,
-        fontWeight: FontWeight.w400
-      ),
+          fontFamily: 'Roboto',
+          color: color,
+          fontSize: size == 0 ? Dimensions.font20 : size,
+          fontWeight: FontWeight.w400),
     );
   }
 }
