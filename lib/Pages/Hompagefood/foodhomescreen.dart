@@ -1,5 +1,6 @@
 
 import 'package:dalyveryfood/utils/colors.dart';
+import 'package:dalyveryfood/widgets/app_column.dart';
 import 'package:dalyveryfood/widgets/big_text.dart';
 import 'package:dalyveryfood/widgets/small_text.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class __HomeFoodmainState extends State<HomeFoodmain> {
       ),
       ),
           Expanded(child: SingleChildScrollView(
-            child: FoodHomebody(),
+            child: AppColumn(text: "Bún bò Huế"),
           ))
         ],
     ),

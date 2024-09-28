@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 import '../../utils/dimension.dart';
 
-
 class FoodHomebody extends StatefulWidget {
   const FoodHomebody({super.key});
 
@@ -92,83 +91,80 @@ class _FoodHomebodyState extends State<FoodHomebody> {
             )),
         // list food and image
 
-          ListView.builder(
-            physics: AlwaysScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                margin: EdgeInsets.only(
-                    left: Dimensions.width20,
-                    right: Dimensions.width20,
-                    bottom: Dimensions.height10),
-                child: Row(
-                  children: [
-                    Container(
-                      width: Dimensions.ListViewImgsize,
-                      height: Dimensions.ListViewImgsize,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.radius20),
-                          color: Colors.white38,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/images/garan.jpg"),
-                          )),
-                    ),
+        ListView.builder(
+          physics: AlwaysScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              margin: EdgeInsets.only(
+                  left: Dimensions.width20,
+                  right: Dimensions.width20,
+                  bottom: Dimensions.height10),
+              child: Row(
+                children: [
+                  Container(
+                    width: Dimensions.ListViewImgsize,
+                    height: Dimensions.ListViewImgsize,
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
+                        color: Colors.white38,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("assets/images/garan.jpg"),
+                        )),
+                  ),
 
-                    //Text container
-                    Expanded(
-                      child: Container(
-
-                          height: Dimensions.ListViewTextContSize,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topRight:
-                                      Radius.circular(Dimensions.radius20),
-                                  bottomRight:
-                                      Radius.circular(Dimensions.radius20)),
-                              color: Colors.white),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: Dimensions.width10,
-                                right: Dimensions.width10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                BigText(text: "Gà rán - Cổ Nhuế"),
-                                SizedBox(height: Dimensions.height10),
-                                SmallText(text: "Với nhiều đồ ăn vặt hơn"),
-                                SizedBox(height: Dimensions.height10),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IconAndText(
-                                        icon: Icons.circle_sharp,
-                                        text: "Normal",
-                                        iconColor: AppColors.iconColor1),
-                                    IconAndText(
-                                        icon: Icons.location_pin,
-                                        text: " 1.5 km",
-                                        iconColor: AppColors.mainColor),
-                                    IconAndText(
-                                        icon: Icons.access_time_sharp,
-                                        text: " 32 min",
-                                        iconColor: AppColors.iconColor2),
-                                  ],
-                                )
-                              ],
-                            ),
-                          )),
-                    )
-                  ],
-                ),
-              );
-            },
-          ),
-
+                  //Text container
+                  Expanded(
+                    child: Container(
+                        height: Dimensions.ListViewTextContSize,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(Dimensions.radius20),
+                                bottomRight:
+                                    Radius.circular(Dimensions.radius20)),
+                            color: Colors.white),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: Dimensions.width10,
+                              right: Dimensions.width10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BigText(text: "Gà rán - Cổ Nhuế"),
+                              SizedBox(height: Dimensions.height10),
+                              SmallText(text: "Với nhiều đồ ăn vặt hơn"),
+                              SizedBox(height: Dimensions.height10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  IconAndText(
+                                      icon: Icons.circle_sharp,
+                                      text: "Normal",
+                                      iconColor: AppColors.iconColor1),
+                                  IconAndText(
+                                      icon: Icons.location_pin,
+                                      text: " 1.5 km",
+                                      iconColor: AppColors.mainColor),
+                                  IconAndText(
+                                      icon: Icons.access_time_sharp,
+                                      text: " 32 min",
+                                      iconColor: AppColors.iconColor2),
+                                ],
+                              )
+                            ],
+                          ),
+                        )),
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ],
     );
   }
@@ -247,7 +243,8 @@ class _FoodHomebodyState extends State<FoodHomebody> {
                     BoxShadow(color: Colors.white54, offset: Offset(-5, 0)),
                   ]),
               child: Container(
-                padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+                padding: EdgeInsets.only(
+                    top: Dimensions.height15, left: 15, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
