@@ -20,7 +20,8 @@ static double width20 = screenHeight/42.2;
 static double width30 = screenHeight/28.13;
 static double width45 = screenHeight/18.8;
 
-static double font20 = screenHeight/28.13;
+static double font20 = screenHeight/42.2;
+static double font26 = screenHeight/32.4;
 
 //radius
 static double radius15 = screenHeight/56.27;

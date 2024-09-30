@@ -12,7 +12,7 @@ class BigText extends StatelessWidget {
       this.color = const Color(0xFF332d2b),
       required this.text,
       this.size = 14,
-      this.overFlow = TextOverflow.fade});
+      this.overFlow = TextOverflow.clip});
 
   @override
   Widget build(BuildContext context) {
