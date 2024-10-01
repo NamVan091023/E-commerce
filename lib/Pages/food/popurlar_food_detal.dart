@@ -1,6 +1,9 @@
+
+
 import 'package:dalyveryfood/utils/dimension.dart';
 import 'package:dalyveryfood/widgets/app_column.dart';
 import 'package:dalyveryfood/widgets/app_icon.dart';
+import 'package:dalyveryfood/widgets/example_text_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +21,7 @@ class PopularFooddetal extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          // background image
           Positioned(
             left: 0,
             right: 0,
@@ -30,6 +34,7 @@ class PopularFooddetal extends StatelessWidget {
                       image: AssetImage("assets/images/foodsrr.png"))),
             ),
           ),
+          //icon widget
           Positioned(
               top: Dimensions.height45,
               left: 0, // Ensure full screen width
@@ -43,6 +48,7 @@ class PopularFooddetal extends StatelessWidget {
                       AppIcon(icon: Icons.shopping_cart_outlined),
                     ],
                   ))),
+          //introduction of food
           Positioned(
               left: 0,
               right: 0,
@@ -65,14 +71,20 @@ class PopularFooddetal extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height20,
                     ),
-                    BigText(text: "Giới thiệu ")
+                    BigText(text: "Giới thiệu "),
+                    SizedBox(
+                      height: Dimensions.height20,
+                    ),
+                    Expanded(child: SingleChildScrollView(child: ExampleText(text: "Các món bún nước ,bún bò huế đầy đủ topping. "))),
                   ],
                 ),
               )),
+          // Example food
+
         ],
       ),
       bottomNavigationBar: Container(
-        height: 120,
+        height: Dimensions.bottomHeighbar,
         padding: EdgeInsets.only(
             top: Dimensions.height30,
             bottom: Dimensions.height30,
@@ -84,6 +96,7 @@ class PopularFooddetal extends StatelessWidget {
                 topLeft: Radius.circular(Dimensions.radius20 * 2),
                 topRight: Radius.circular(Dimensions.radius20 * 2))),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               padding: EdgeInsets.only(

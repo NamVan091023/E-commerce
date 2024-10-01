@@ -11,7 +11,7 @@ class SmallText extends StatelessWidget {
     this.color = const Color(0xFFccc7c5),  // Default color value
     required this.text,
     this.size = 12,  // Default size
-    this.height = 1, // Default height
+    this.height = 1.2, // Default height
   });
 
   @override

@@ -136,7 +136,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
                             children: [
                               BigText(text: "Gà rán - Cổ Nhuế"),
                               SizedBox(height: Dimensions.height10),
-                              SmallText(text: "Với nhiều đồ ăn vặt hơn"),
+                              SmallText(text: " nhiều đồ ăn vặt hơn"),
                               SizedBox(height: Dimensions.height10),
                               Row(
                                 mainAxisAlignment:
