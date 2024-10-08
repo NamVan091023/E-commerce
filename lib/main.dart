@@ -3,11 +3,15 @@ import 'package:dalyveryfood/Pages/food/recommend_food_deltal.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'helper/dependencies.dart' as dep;
 
 import 'Pages/Hompagefood/foodhomescreen.dart';
 import 'Pages/food/popurlar_food_detal.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding();
+  await dep.init();
+
   runApp(const MyApp());
 }
 
