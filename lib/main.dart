@@ -1,5 +1,6 @@
 
 import 'package:dalyveryfood/Pages/food/recommend_food_deltal.dart';
+import 'package:dalyveryfood/controllers/popular_product_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -9,7 +10,7 @@ import 'Pages/Hompagefood/foodhomescreen.dart';
 import 'Pages/food/popurlar_food_detal.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding();
+  WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
 
   runApp(const MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.find<PopularProductController>().getPopularProductList();
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

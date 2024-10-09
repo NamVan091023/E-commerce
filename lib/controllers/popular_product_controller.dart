@@ -1,6 +1,8 @@
 import 'package:dalyveryfood/data/repository/popular_product_repo.dart';
 import 'package:get/get.dart';
 
+import '../models/products_apis.dart';
+
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
   PopularProductController({required this.popularProductRepo});
@@ -11,6 +13,7 @@ class PopularProductController extends GetxController {
     Response response = await popularProductRepo.getPopularProductList();
     if (response.status == 200) {
       _popularProductList = [];
+      _popularProductList.addAll(Product.fromJson(response.body).products);
 
       update();
     } else {

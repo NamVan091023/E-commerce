@@ -4,8 +4,9 @@ import 'package:dalyveryfood/data/repository/popular_product_repo.dart';
 import 'package:get/get.dart';
 
 Future<void> init()async {
+
   //api
-  Get.lazyPut(()=>ApiClient(appBaseUrl: "https://www.dbestech.com/"));
+  Get.lazyPut(()=>ApiClient(appBaseUrl: "https://mvs.bslmeiyu.com", token: ''));
 
 
   //repo
