@@ -1,4 +1,5 @@
 
+import 'package:dalyveryfood/Pages/Hompagefood/foodhomebody.dart';
 import 'package:dalyveryfood/Pages/food/recommend_food_deltal.dart';
 import 'package:dalyveryfood/controllers/popular_product_controller.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: RecommendFoodDetail(),
+        home: HomeFoodmain(),
     );
   }
 }

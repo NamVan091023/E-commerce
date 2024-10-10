@@ -6,17 +6,17 @@ import 'package:dalyveryfood/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/dimension.dart';
-
 import 'foodhomebody.dart';
+
 
 class HomeFoodmain extends StatefulWidget {
   const HomeFoodmain({super.key});
 
   @override
-  State<HomeFoodmain> createState() => __HomeFoodmainState();
+  State<HomeFoodmain> createState() => _HomeFoodmainState();
 }
 
-class __HomeFoodmainState extends State<HomeFoodmain> {
+class _HomeFoodmainState extends State<HomeFoodmain> {
   @override
   Widget build(BuildContext context) {
     print("current height is "+ MediaQuery.of(context).size.height.toString());
@@ -59,7 +59,7 @@ class __HomeFoodmainState extends State<HomeFoodmain> {
       ),
       ),
           Expanded(child: SingleChildScrollView(
-            child: AppColumn(text: "Bún bò Huế"),
+            child: FoodHomebody(),
           ))
         ],
     ),

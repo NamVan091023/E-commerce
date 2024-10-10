@@ -1,11 +1,16 @@
+import 'package:dalyveryfood/utils/app_constarts.dart';
 import 'package:dalyveryfood/utils/colors.dart';
 import 'package:dalyveryfood/widgets/big_text.dart';
 import 'package:dalyveryfood/widgets/iconandtext.dart';
 import 'package:dalyveryfood/widgets/small_text.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../controllers/popular_product_controller.dart';
+import '../../models/products_apis.dart';
 import '../../utils/dimension.dart';
+import 'package:get/get.dart';
 
 class FoodHomebody extends StatefulWidget {
   const FoodHomebody({super.key});
@@ -41,28 +46,32 @@ class _FoodHomebodyState extends State<FoodHomebody> {
     return Column(
       children: [
         //slidepage
-        Container(
+      GetBuilder<PopularProductController>(builder: (popularProducts){
+        return   Container(
           //color: Colors.redAccent,
           height: Dimensions.screenView,
           child: PageView.builder(
               controller: pageController,
-              itemCount: 7,
+              itemCount: popularProducts.popularProductList.length,
               itemBuilder: (context, position) {
-                return _buildPageItem(position);
+                return _buildPageItem(position, popularProducts.popularProductList[position]);
               }),
-        ),
+        );
+      }),
         //dots
-        new DotsIndicator(
-          dotsCount: 7,
-          position: _currPageValue.round(),
-          decorator: DotsDecorator(
-            size: const Size.square(9.0),
-            activeSize: const Size(18.0, 9.0),
-            activeColor: AppColors.mainColor,
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-          ),
-        ),
+       GetBuilder<PopularProductController>(builder: (popularProducts){
+         return  DotsIndicator(
+           dotsCount: popularProducts.popularProductList.length<=0?1:popularProducts.popularProductList.length,
+           position: _currPageValue.round(),
+           decorator: DotsDecorator(
+             size: const Size.square(9.0),
+             activeSize: const Size(18.0, 9.0),
+             activeColor: AppColors.mainColor,
+             activeShape: RoundedRectangleBorder(
+                 borderRadius: BorderRadius.circular(5.0)),
+           ),
+         );
+       }),
         //polurpar text
         SizedBox(
           height: Dimensions.height30,
@@ -92,7 +101,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
         // list food and image
 
         ListView.builder(
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           shrinkWrap: true,
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
@@ -169,7 +178,7 @@ class _FoodHomebodyState extends State<FoodHomebody> {
     );
   }
 
-  Widget _buildPageItem(int index) {
+  Widget _buildPageItem(int index, ProductsModel popularProduct) {
     Matrix4 matrix = new Matrix4.identity();
     /*if(index==_currPageValue.floor()){
       var currScale=1-(_currPageValue-index)*(1-_scaleFactor);
@@ -220,7 +229,10 @@ class _FoodHomebodyState extends State<FoodHomebody> {
                 color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("assets/images/foodsrr.png"))),
+                    image: NetworkImage(
+                        AppConstants.BASE_URL+ "/upload/"+popularProduct.img!
+                    )
+                )),
           ),
           Align(
             alignment: Alignment.bottomCenter,
